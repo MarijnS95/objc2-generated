@@ -65,12 +65,12 @@ extern_protocol!(
         /// Sets the width of a tile for this render pass.
         #[unsafe(method(tileWidth))]
         #[unsafe(method_family = none)]
-        unsafe fn tileWidth(&self) -> NSUInteger;
+        fn tileWidth(&self) -> NSUInteger;
 
         /// Sets the height of a tile for this render pass.
         #[unsafe(method(tileHeight))]
         #[unsafe(method_family = none)]
-        unsafe fn tileHeight(&self) -> NSUInteger;
+        fn tileHeight(&self) -> NSUInteger;
 
         #[cfg(feature = "MTLRenderPipeline")]
         /// Sets the mapping from logical shader color output to physical render pass color attachments.
@@ -96,7 +96,7 @@ extern_protocol!(
         /// - Parameter pipelineState: a non-`nil` ``MTLRenderPipelineState`` instance.
         #[unsafe(method(setRenderPipelineState:))]
         #[unsafe(method_family = none)]
-        unsafe fn setRenderPipelineState(
+        fn setRenderPipelineState(
             &self,
             pipeline_state: &ProtocolObject<dyn MTLRenderPipelineState>,
         );
@@ -110,7 +110,7 @@ extern_protocol!(
         /// - Parameter viewport: ``MTLViewport`` to set.
         #[unsafe(method(setViewport:))]
         #[unsafe(method_family = none)]
-        unsafe fn setViewport(&self, viewport: MTLViewport);
+        fn setViewport(&self, viewport: MTLViewport);
 
         #[cfg(feature = "MTLRenderCommandEncoder")]
         /// Sets an array of viewports to transform vertices from normalized device coordinates to window coordinates.
@@ -155,7 +155,7 @@ extern_protocol!(
         /// - Parameter cullMode: ``MTLCullMode`` to set.
         #[unsafe(method(setCullMode:))]
         #[unsafe(method_family = none)]
-        unsafe fn setCullMode(&self, cull_mode: MTLCullMode);
+        fn setCullMode(&self, cull_mode: MTLCullMode);
 
         #[cfg(feature = "MTLRenderCommandEncoder")]
         /// Controls the behavior for fragments outside of the near or far planes.
@@ -163,7 +163,7 @@ extern_protocol!(
         /// - Parameter depthClipMode: ``MTLDepthClipMode`` to set.
         #[unsafe(method(setDepthClipMode:))]
         #[unsafe(method_family = none)]
-        unsafe fn setDepthClipMode(&self, depth_clip_mode: MTLDepthClipMode);
+        fn setDepthClipMode(&self, depth_clip_mode: MTLDepthClipMode);
 
         /// Configures the adjustments a render pass applies to depth values from fragment shader functions
         /// by a scaling factor and bias.
@@ -176,7 +176,7 @@ extern_protocol!(
         /// or negative bias, respectively. Set this value to `0` to disable bias clamping.
         #[unsafe(method(setDepthBias:slopeScale:clamp:))]
         #[unsafe(method_family = none)]
-        unsafe fn setDepthBias_slopeScale_clamp(
+        fn setDepthBias_slopeScale_clamp(
             &self,
             depth_bias: c_float,
             slope_scale: c_float,
@@ -192,7 +192,7 @@ extern_protocol!(
         /// within the current render attachment.
         #[unsafe(method(setScissorRect:))]
         #[unsafe(method_family = none)]
-        unsafe fn setScissorRect(&self, rect: MTLScissorRect);
+        fn setScissorRect(&self, rect: MTLScissorRect);
 
         #[cfg(feature = "MTLRenderCommandEncoder")]
         /// Sets an array of scissor rectangles for a fragment scissor test.
@@ -219,7 +219,7 @@ extern_protocol!(
         /// rasterize triangles or triangle strips.
         #[unsafe(method(setTriangleFillMode:))]
         #[unsafe(method_family = none)]
-        unsafe fn setTriangleFillMode(&self, fill_mode: MTLTriangleFillMode);
+        fn setTriangleFillMode(&self, fill_mode: MTLTriangleFillMode);
 
         /// Configures each pixel component value, including alpha, for the render pipeline’s constant blend color.
         ///
@@ -230,7 +230,7 @@ extern_protocol!(
         /// - alpha: A value for the alpha component for the blend color constant.
         #[unsafe(method(setBlendColorRed:green:blue:alpha:))]
         #[unsafe(method_family = none)]
-        unsafe fn setBlendColorRed_green_blue_alpha(
+        fn setBlendColorRed_green_blue_alpha(
             &self,
             red: c_float,
             green: c_float,
@@ -244,7 +244,7 @@ extern_protocol!(
         /// - Parameter depthStencilState: the ``MTLDepthStencilState`` instance to set.
         #[unsafe(method(setDepthStencilState:))]
         #[unsafe(method_family = none)]
-        unsafe fn setDepthStencilState(
+        fn setDepthStencilState(
             &self,
             depth_stencil_state: Option<&ProtocolObject<dyn MTLDepthStencilState>>,
         );
@@ -256,7 +256,7 @@ extern_protocol!(
         /// - Parameter referenceValue: A stencil test comparison value.
         #[unsafe(method(setStencilReferenceValue:))]
         #[unsafe(method_family = none)]
-        unsafe fn setStencilReferenceValue(&self, reference_value: u32);
+        fn setStencilReferenceValue(&self, reference_value: u32);
 
         /// Configures the encoder with different stencil test reference values for front-facing and back-facing primitives.
         ///
@@ -270,7 +270,7 @@ extern_protocol!(
         /// to back-facing primitives.
         #[unsafe(method(setStencilFrontReferenceValue:backReferenceValue:))]
         #[unsafe(method_family = none)]
-        unsafe fn setStencilFrontReferenceValue_backReferenceValue(
+        fn setStencilFrontReferenceValue_backReferenceValue(
             &self,
             front_reference_value: u32,
             back_reference_value: u32,
@@ -290,11 +290,7 @@ extern_protocol!(
         /// the result of a visibility test at `offset`, which needs to be a multiple of `8`.
         #[unsafe(method(setVisibilityResultMode:offset:))]
         #[unsafe(method_family = none)]
-        unsafe fn setVisibilityResultMode_offset(
-            &self,
-            mode: MTLVisibilityResultMode,
-            offset: NSUInteger,
-        );
+        fn setVisibilityResultMode_offset(&self, mode: MTLVisibilityResultMode, offset: NSUInteger);
 
         #[cfg(feature = "MTLRenderPass")]
         /// Configures the store action for a color attachment.
@@ -318,7 +314,7 @@ extern_protocol!(
         /// can’t be ``MTLStoreAction/MTLStoreActionUnknown``.
         #[unsafe(method(setDepthStoreAction:))]
         #[unsafe(method_family = none)]
-        unsafe fn setDepthStoreAction(&self, store_action: MTLStoreAction);
+        fn setDepthStoreAction(&self, store_action: MTLStoreAction);
 
         #[cfg(feature = "MTLRenderPass")]
         /// Configures the store action for the stencil attachment.
@@ -327,7 +323,7 @@ extern_protocol!(
         /// can’t be ``MTLStoreAction/MTLStoreActionUnknown``.
         #[unsafe(method(setStencilStoreAction:))]
         #[unsafe(method_family = none)]
-        unsafe fn setStencilStoreAction(&self, store_action: MTLStoreAction);
+        fn setStencilStoreAction(&self, store_action: MTLStoreAction);
 
         #[cfg(feature = "MTLRenderCommandEncoder")]
         /// Encodes a draw command that renders an instance of a geometric primitive.
@@ -800,7 +796,7 @@ extern_protocol!(
         /// - stages: A ``MTLRenderStages`` bitmask that specifies the shader stages with visibility over the table.
         #[unsafe(method(setArgumentTable:atStages:))]
         #[unsafe(method_family = none)]
-        unsafe fn setArgumentTable_atStages(
+        fn setArgumentTable_atStages(
             &self,
             argument_table: &ProtocolObject<dyn MTL4ArgumentTable>,
             stages: MTLRenderStages,
@@ -813,7 +809,7 @@ extern_protocol!(
         /// interprets as front facing.
         #[unsafe(method(setFrontFacingWinding:))]
         #[unsafe(method_family = none)]
-        unsafe fn setFrontFacingWinding(&self, front_facing_winding: MTLWinding);
+        fn setFrontFacingWinding(&self, front_facing_winding: MTLWinding);
 
         #[cfg(all(feature = "MTL4Counters", feature = "MTLRenderCommandEncoder"))]
         /// Writes a GPU timestamp into the given ``MTL4CounterHeap`` at `index` after `stage` completes.

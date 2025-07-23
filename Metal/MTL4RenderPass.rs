@@ -42,21 +42,19 @@ impl MTL4RenderPassDescriptor {
         /// Accesses the array of state information for render attachments that store color data.
         #[unsafe(method(colorAttachments))]
         #[unsafe(method_family = none)]
-        pub unsafe fn colorAttachments(
-            &self,
-        ) -> Retained<MTLRenderPassColorAttachmentDescriptorArray>;
+        pub fn colorAttachments(&self) -> Retained<MTLRenderPassColorAttachmentDescriptorArray>;
 
         #[cfg(feature = "MTLRenderPass")]
         /// Accesses state information for a render attachment that stores depth data.
         #[unsafe(method(depthAttachment))]
         #[unsafe(method_family = none)]
-        pub unsafe fn depthAttachment(&self) -> Retained<MTLRenderPassDepthAttachmentDescriptor>;
+        pub fn depthAttachment(&self) -> Retained<MTLRenderPassDepthAttachmentDescriptor>;
 
         #[cfg(feature = "MTLRenderPass")]
         /// Setter for [`depthAttachment`][Self::depthAttachment].
         #[unsafe(method(setDepthAttachment:))]
         #[unsafe(method_family = none)]
-        pub unsafe fn setDepthAttachment(
+        pub fn setDepthAttachment(
             &self,
             depth_attachment: Option<&MTLRenderPassDepthAttachmentDescriptor>,
         );
@@ -65,15 +63,13 @@ impl MTL4RenderPassDescriptor {
         /// Accesses state information for a render attachment that stores stencil data.
         #[unsafe(method(stencilAttachment))]
         #[unsafe(method_family = none)]
-        pub unsafe fn stencilAttachment(
-            &self,
-        ) -> Retained<MTLRenderPassStencilAttachmentDescriptor>;
+        pub fn stencilAttachment(&self) -> Retained<MTLRenderPassStencilAttachmentDescriptor>;
 
         #[cfg(feature = "MTLRenderPass")]
         /// Setter for [`stencilAttachment`][Self::stencilAttachment].
         #[unsafe(method(setStencilAttachment:))]
         #[unsafe(method_family = none)]
-        pub unsafe fn setStencilAttachment(
+        pub fn setStencilAttachment(
             &self,
             stencil_attachment: Option<&MTLRenderPassStencilAttachmentDescriptor>,
         );
@@ -81,7 +77,7 @@ impl MTL4RenderPassDescriptor {
         /// Assigns the number of layers that all attachments this descriptor references have.
         #[unsafe(method(renderTargetArrayLength))]
         #[unsafe(method_family = none)]
-        pub unsafe fn renderTargetArrayLength(&self) -> NSUInteger;
+        pub fn renderTargetArrayLength(&self) -> NSUInteger;
 
         /// Setter for [`renderTargetArrayLength`][Self::renderTargetArrayLength].
         #[unsafe(method(setRenderTargetArrayLength:))]
@@ -91,7 +87,7 @@ impl MTL4RenderPassDescriptor {
         /// Assigns the per-sample size, in bytes, of the largest explicit imageblock layout in the render pass.
         #[unsafe(method(imageblockSampleLength))]
         #[unsafe(method_family = none)]
-        pub unsafe fn imageblockSampleLength(&self) -> NSUInteger;
+        pub fn imageblockSampleLength(&self) -> NSUInteger;
 
         /// Setter for [`imageblockSampleLength`][Self::imageblockSampleLength].
         #[unsafe(method(setImageblockSampleLength:))]
@@ -101,7 +97,7 @@ impl MTL4RenderPassDescriptor {
         /// Assigns the per-tile size, in bytes, of the persistent threadgroup memory allocation of this render pass.
         #[unsafe(method(threadgroupMemoryLength))]
         #[unsafe(method_family = none)]
-        pub unsafe fn threadgroupMemoryLength(&self) -> NSUInteger;
+        pub fn threadgroupMemoryLength(&self) -> NSUInteger;
 
         /// Setter for [`threadgroupMemoryLength`][Self::threadgroupMemoryLength].
         #[unsafe(method(setThreadgroupMemoryLength:))]
@@ -119,12 +115,12 @@ impl MTL4RenderPassDescriptor {
         /// for more information about tiles, tile memory, and deferred rendering.
         #[unsafe(method(tileWidth))]
         #[unsafe(method_family = none)]
-        pub unsafe fn tileWidth(&self) -> NSUInteger;
+        pub fn tileWidth(&self) -> NSUInteger;
 
         /// Setter for [`tileWidth`][Self::tileWidth].
         #[unsafe(method(setTileWidth:))]
         #[unsafe(method_family = none)]
-        pub unsafe fn setTileWidth(&self, tile_width: NSUInteger);
+        pub fn setTileWidth(&self, tile_width: NSUInteger);
 
         /// The height of the tiles, in pixels, a render pass you create with this descriptor applies to its attachments.
         ///
@@ -137,22 +133,22 @@ impl MTL4RenderPassDescriptor {
         /// for more information about tiles, tile memory, and deferred rendering.
         #[unsafe(method(tileHeight))]
         #[unsafe(method_family = none)]
-        pub unsafe fn tileHeight(&self) -> NSUInteger;
+        pub fn tileHeight(&self) -> NSUInteger;
 
         /// Setter for [`tileHeight`][Self::tileHeight].
         #[unsafe(method(setTileHeight:))]
         #[unsafe(method_family = none)]
-        pub unsafe fn setTileHeight(&self, tile_height: NSUInteger);
+        pub fn setTileHeight(&self, tile_height: NSUInteger);
 
         /// Sets the default raster sample count for the render pass when it references no attachments.
         #[unsafe(method(defaultRasterSampleCount))]
         #[unsafe(method_family = none)]
-        pub unsafe fn defaultRasterSampleCount(&self) -> NSUInteger;
+        pub fn defaultRasterSampleCount(&self) -> NSUInteger;
 
         /// Setter for [`defaultRasterSampleCount`][Self::defaultRasterSampleCount].
         #[unsafe(method(setDefaultRasterSampleCount:))]
         #[unsafe(method_family = none)]
-        pub unsafe fn setDefaultRasterSampleCount(&self, default_raster_sample_count: NSUInteger);
+        pub fn setDefaultRasterSampleCount(&self, default_raster_sample_count: NSUInteger);
 
         /// Sets the width, in pixels, to which Metal constrains the render target.
         ///
@@ -161,12 +157,12 @@ impl MTL4RenderPassDescriptor {
         /// The default value of this property is `0`.
         #[unsafe(method(renderTargetWidth))]
         #[unsafe(method_family = none)]
-        pub unsafe fn renderTargetWidth(&self) -> NSUInteger;
+        pub fn renderTargetWidth(&self) -> NSUInteger;
 
         /// Setter for [`renderTargetWidth`][Self::renderTargetWidth].
         #[unsafe(method(setRenderTargetWidth:))]
         #[unsafe(method_family = none)]
-        pub unsafe fn setRenderTargetWidth(&self, render_target_width: NSUInteger);
+        pub fn setRenderTargetWidth(&self, render_target_width: NSUInteger);
 
         /// Sets the height, in pixels, to which Metal constrains the render target.
         ///
@@ -175,12 +171,12 @@ impl MTL4RenderPassDescriptor {
         /// The default value of this property is `0`.
         #[unsafe(method(renderTargetHeight))]
         #[unsafe(method_family = none)]
-        pub unsafe fn renderTargetHeight(&self) -> NSUInteger;
+        pub fn renderTargetHeight(&self) -> NSUInteger;
 
         /// Setter for [`renderTargetHeight`][Self::renderTargetHeight].
         #[unsafe(method(setRenderTargetHeight:))]
         #[unsafe(method_family = none)]
-        pub unsafe fn setRenderTargetHeight(&self, render_target_height: NSUInteger);
+        pub fn setRenderTargetHeight(&self, render_target_height: NSUInteger);
 
         #[cfg(feature = "MTLRasterizationRate")]
         /// Assigns an optional variable rasterization rate map that Metal uses in the render pass.
@@ -191,7 +187,7 @@ impl MTL4RenderPassDescriptor {
         /// When set to `nil`, the default, Metal doesn't use variable rasterization rate.
         #[unsafe(method(rasterizationRateMap))]
         #[unsafe(method_family = none)]
-        pub unsafe fn rasterizationRateMap(
+        pub fn rasterizationRateMap(
             &self,
         ) -> Option<Retained<ProtocolObject<dyn MTLRasterizationRateMap>>>;
 
@@ -199,7 +195,7 @@ impl MTL4RenderPassDescriptor {
         /// Setter for [`rasterizationRateMap`][Self::rasterizationRateMap].
         #[unsafe(method(setRasterizationRateMap:))]
         #[unsafe(method_family = none)]
-        pub unsafe fn setRasterizationRateMap(
+        pub fn setRasterizationRateMap(
             &self,
             rasterization_rate_map: Option<&ProtocolObject<dyn MTLRasterizationRateMap>>,
         );
@@ -212,9 +208,7 @@ impl MTL4RenderPassDescriptor {
         /// Configures a buffer into which Metal writes counts of fragments (pixels) passing the depth and stencil tests.
         #[unsafe(method(visibilityResultBuffer))]
         #[unsafe(method_family = none)]
-        pub unsafe fn visibilityResultBuffer(
-            &self,
-        ) -> Option<Retained<ProtocolObject<dyn MTLBuffer>>>;
+        pub fn visibilityResultBuffer(&self) -> Option<Retained<ProtocolObject<dyn MTLBuffer>>>;
 
         #[cfg(all(
             feature = "MTLAllocation",
@@ -224,7 +218,7 @@ impl MTL4RenderPassDescriptor {
         /// Setter for [`visibilityResultBuffer`][Self::visibilityResultBuffer].
         #[unsafe(method(setVisibilityResultBuffer:))]
         #[unsafe(method_family = none)]
-        pub unsafe fn setVisibilityResultBuffer(
+        pub fn setVisibilityResultBuffer(
             &self,
             visibility_result_buffer: Option<&ProtocolObject<dyn MTLBuffer>>,
         );
@@ -233,16 +227,13 @@ impl MTL4RenderPassDescriptor {
         /// Determines if Metal accumulates visibility results between render encoders or resets them.
         #[unsafe(method(visibilityResultType))]
         #[unsafe(method_family = none)]
-        pub unsafe fn visibilityResultType(&self) -> MTLVisibilityResultType;
+        pub fn visibilityResultType(&self) -> MTLVisibilityResultType;
 
         #[cfg(feature = "MTLRenderPass")]
         /// Setter for [`visibilityResultType`][Self::visibilityResultType].
         #[unsafe(method(setVisibilityResultType:))]
         #[unsafe(method_family = none)]
-        pub unsafe fn setVisibilityResultType(
-            &self,
-            visibility_result_type: MTLVisibilityResultType,
-        );
+        pub fn setVisibilityResultType(&self, visibility_result_type: MTLVisibilityResultType);
 
         #[cfg(feature = "MTLTypes")]
         /// Configures the custom sample positions to use in MSAA rendering.
@@ -282,15 +273,12 @@ impl MTL4RenderPassDescriptor {
         /// Controls if the render pass supports color attachment mapping.
         #[unsafe(method(supportColorAttachmentMapping))]
         #[unsafe(method_family = none)]
-        pub unsafe fn supportColorAttachmentMapping(&self) -> bool;
+        pub fn supportColorAttachmentMapping(&self) -> bool;
 
         /// Setter for [`supportColorAttachmentMapping`][Self::supportColorAttachmentMapping].
         #[unsafe(method(setSupportColorAttachmentMapping:))]
         #[unsafe(method_family = none)]
-        pub unsafe fn setSupportColorAttachmentMapping(
-            &self,
-            support_color_attachment_mapping: bool,
-        );
+        pub fn setSupportColorAttachmentMapping(&self, support_color_attachment_mapping: bool);
     );
 }
 

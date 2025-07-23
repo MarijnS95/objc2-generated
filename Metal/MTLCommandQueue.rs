@@ -41,7 +41,7 @@ extern_protocol!(
         /// Returns a new autoreleased command buffer used to encode work into this queue.
         #[unsafe(method(commandBufferWithDescriptor:))]
         #[unsafe(method_family = none)]
-        unsafe fn commandBufferWithDescriptor(
+        fn commandBufferWithDescriptor(
             &self,
             descriptor: &MTLCommandBufferDescriptor,
         ) -> Option<Retained<ProtocolObject<dyn MTLCommandBuffer>>>;
@@ -51,7 +51,7 @@ extern_protocol!(
         /// does not maintain strong references to resources used within the command buffer.
         #[unsafe(method(commandBufferWithUnretainedReferences))]
         #[unsafe(method_family = none)]
-        unsafe fn commandBufferWithUnretainedReferences(
+        fn commandBufferWithUnretainedReferences(
             &self,
         ) -> Option<Retained<ProtocolObject<dyn MTLCommandBuffer>>>;
 
@@ -65,7 +65,7 @@ extern_protocol!(
         /// Marks the residency set as part of the command queue execution. This ensures that the residency set is resident during execution of all the command buffers within the queue.
         #[unsafe(method(addResidencySet:))]
         #[unsafe(method_family = none)]
-        unsafe fn addResidencySet(&self, residency_set: &ProtocolObject<dyn MTLResidencySet>);
+        fn addResidencySet(&self, residency_set: &ProtocolObject<dyn MTLResidencySet>);
 
         #[cfg(feature = "MTLResidencySet")]
         /// Marks the residency sets as part of the command queue execution. This ensures that the residency sets are resident during execution of all the command buffers within the queue.
@@ -81,7 +81,7 @@ extern_protocol!(
         /// Removes the residency set from the command queue execution. This ensures that only the remaining residency sets are resident during execution of all the command buffers within the queue.
         #[unsafe(method(removeResidencySet:))]
         #[unsafe(method_family = none)]
-        unsafe fn removeResidencySet(&self, residency_set: &ProtocolObject<dyn MTLResidencySet>);
+        fn removeResidencySet(&self, residency_set: &ProtocolObject<dyn MTLResidencySet>);
 
         #[cfg(feature = "MTLResidencySet")]
         /// Removes the residency sets from the command queue execution. This ensures that only the remaining residency sets are resident during execution of all the command buffers within the queue.

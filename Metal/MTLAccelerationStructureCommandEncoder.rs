@@ -268,7 +268,7 @@ extern_protocol!(
         /// Drivers may delay fence updates until the end of the encoder. Drivers may also wait on fences at the beginning of an encoder. It is therefore illegal to wait on a fence after it has been updated in the same encoder.
         #[unsafe(method(updateFence:))]
         #[unsafe(method_family = none)]
-        unsafe fn updateFence(&self, fence: &ProtocolObject<dyn MTLFence>);
+        fn updateFence(&self, fence: &ProtocolObject<dyn MTLFence>);
 
         #[cfg(feature = "MTLFence")]
         /// Prevent further GPU work until the fence is reached.
@@ -277,7 +277,7 @@ extern_protocol!(
         /// Drivers may delay fence updates until the end of the encoder. Drivers may also wait on fences at the beginning of an encoder. It is therefore illegal to wait on a fence after it has been updated in the same encoder.
         #[unsafe(method(waitForFence:))]
         #[unsafe(method_family = none)]
-        unsafe fn waitForFence(&self, fence: &ProtocolObject<dyn MTLFence>);
+        fn waitForFence(&self, fence: &ProtocolObject<dyn MTLFence>);
 
         #[cfg(all(feature = "MTLAllocation", feature = "MTLResource"))]
         /// Declare that a resource may be accessed by the command encoder through an argument buffer

@@ -328,7 +328,7 @@ extern_protocol!(
         /// Returns: The buffer, or nil if the heap is not a placement heap
         #[unsafe(method(newBufferWithLength:options:offset:))]
         #[unsafe(method_family = new)]
-        unsafe fn newBufferWithLength_options_offset(
+        fn newBufferWithLength_options_offset(
             &self,
             length: NSUInteger,
             options: MTLResourceOptions,
@@ -349,7 +349,7 @@ extern_protocol!(
         /// Returns: The texture, or nil if the heap is not a placement heap.
         #[unsafe(method(newTextureWithDescriptor:offset:))]
         #[unsafe(method_family = new)]
-        unsafe fn newTextureWithDescriptor_offset(
+        fn newTextureWithDescriptor_offset(
             &self,
             descriptor: &MTLTextureDescriptor,
             offset: NSUInteger,
@@ -361,7 +361,7 @@ extern_protocol!(
         /// Returns: The acceleration structure or nil if heap is full. Note that the MTLAccelerationStructure merely represents storage for an acceleration structure. It will still need to be populated via a build, copy, refit, etc.
         #[unsafe(method(newAccelerationStructureWithSize:))]
         #[unsafe(method_family = new)]
-        unsafe fn newAccelerationStructureWithSize(
+        fn newAccelerationStructureWithSize(
             &self,
             size: NSUInteger,
         ) -> Option<Retained<ProtocolObject<dyn MTLAccelerationStructure>>>;
@@ -374,7 +374,7 @@ extern_protocol!(
         /// Returns: The acceleration structure or nil if heap is full. Note that the MTLAccelerationStructure merely represents storage for an acceleration structure. It will still need to be populated via a build, copy, refit, etc.
         #[unsafe(method(newAccelerationStructureWithDescriptor:))]
         #[unsafe(method_family = new)]
-        unsafe fn newAccelerationStructureWithDescriptor(
+        fn newAccelerationStructureWithDescriptor(
             &self,
             descriptor: &MTLAccelerationStructureDescriptor,
         ) -> Option<Retained<ProtocolObject<dyn MTLAccelerationStructure>>>;
@@ -393,7 +393,7 @@ extern_protocol!(
         /// Returns: The acceleration structure, or nil if the heap is not a placement heap
         #[unsafe(method(newAccelerationStructureWithSize:offset:))]
         #[unsafe(method_family = new)]
-        unsafe fn newAccelerationStructureWithSize_offset(
+        fn newAccelerationStructureWithSize_offset(
             &self,
             size: NSUInteger,
             offset: NSUInteger,
@@ -414,7 +414,7 @@ extern_protocol!(
         /// Returns: The acceleration structure, or nil if the heap is not a placement heap
         #[unsafe(method(newAccelerationStructureWithDescriptor:offset:))]
         #[unsafe(method_family = new)]
-        unsafe fn newAccelerationStructureWithDescriptor_offset(
+        fn newAccelerationStructureWithDescriptor_offset(
             &self,
             descriptor: &MTLAccelerationStructureDescriptor,
             offset: NSUInteger,

@@ -92,8 +92,15 @@ impl MTL4CommitOptions {
 
         #[unsafe(method(new))]
         #[unsafe(method_family = new)]
-        pub unsafe fn new() -> Retained<Self>;
+        pub fn new() -> Retained<Self>;
     );
+}
+
+impl DefaultRetained for MTL4CommitOptions {
+    #[inline]
+    fn default_retained() -> Retained<Self> {
+        Self::new()
+    }
 }
 
 extern_class!(
@@ -122,12 +129,12 @@ impl MTL4CommandQueueDescriptor {
         /// Assigns an optional label to the command queue instance for debugging purposes.
         #[unsafe(method(label))]
         #[unsafe(method_family = none)]
-        pub unsafe fn label(&self) -> Option<Retained<NSString>>;
+        pub fn label(&self) -> Option<Retained<NSString>>;
 
         /// Setter for [`label`][Self::label].
         #[unsafe(method(setLabel:))]
         #[unsafe(method_family = none)]
-        pub unsafe fn setLabel(&self, label: Option<&NSString>);
+        pub fn setLabel(&self, label: Option<&NSString>);
 
         #[cfg(feature = "dispatch2")]
         /// Assigns a dispatch queue to which Metal submits feedback notification blocks.
@@ -138,13 +145,13 @@ impl MTL4CommandQueueDescriptor {
         /// notifications.
         #[unsafe(method(feedbackQueue))]
         #[unsafe(method_family = none)]
-        pub unsafe fn feedbackQueue(&self) -> Option<Retained<DispatchQueue>>;
+        pub fn feedbackQueue(&self) -> Option<Retained<DispatchQueue>>;
 
         #[cfg(feature = "dispatch2")]
         /// Setter for [`feedbackQueue`][Self::feedbackQueue].
         #[unsafe(method(setFeedbackQueue:))]
         #[unsafe(method_family = none)]
-        pub unsafe fn setFeedbackQueue(&self, feedback_queue: Option<&DispatchQueue>);
+        pub fn setFeedbackQueue(&self, feedback_queue: Option<&DispatchQueue>);
     );
 }
 
@@ -157,8 +164,15 @@ impl MTL4CommandQueueDescriptor {
 
         #[unsafe(method(new))]
         #[unsafe(method_family = new)]
-        pub unsafe fn new() -> Retained<Self>;
+        pub fn new() -> Retained<Self>;
     );
+}
+
+impl DefaultRetained for MTL4CommandQueueDescriptor {
+    #[inline]
+    fn default_retained() -> Retained<Self> {
+        Self::new()
+    }
 }
 
 /// Groups together arguments for an operation to update a sparse texture mapping.
@@ -355,12 +369,12 @@ extern_protocol!(
         /// Returns the GPU device that the command queue belongs to.
         #[unsafe(method(device))]
         #[unsafe(method_family = none)]
-        unsafe fn device(&self) -> Retained<ProtocolObject<dyn MTLDevice>>;
+        fn device(&self) -> Retained<ProtocolObject<dyn MTLDevice>>;
 
         /// Obtains this queue's optional label for debugging purposes.
         #[unsafe(method(label))]
         #[unsafe(method_family = none)]
-        unsafe fn label(&self) -> Option<Retained<NSString>>;
+        fn label(&self) -> Option<Retained<NSString>>;
 
         #[cfg(feature = "MTL4CommandBuffer")]
         /// Enqueues an array of command buffers for execution.
@@ -423,7 +437,7 @@ extern_protocol!(
         /// - value: the value to signal the ``MTLEvent`` with.
         #[unsafe(method(signalEvent:value:))]
         #[unsafe(method_family = none)]
-        unsafe fn signalEvent_value(&self, event: &ProtocolObject<dyn MTLEvent>, value: u64);
+        fn signalEvent_value(&self, event: &ProtocolObject<dyn MTLEvent>, value: u64);
 
         #[cfg(feature = "MTLEvent")]
         /// Schedules an operation to wait for a GPU event of a specific value before continuing to execute any future GPU work.
@@ -433,7 +447,7 @@ extern_protocol!(
         /// - value: the specific value to wait for.
         #[unsafe(method(waitForEvent:value:))]
         #[unsafe(method_family = none)]
-        unsafe fn waitForEvent_value(&self, event: &ProtocolObject<dyn MTLEvent>, value: u64);
+        fn waitForEvent_value(&self, event: &ProtocolObject<dyn MTLEvent>, value: u64);
 
         #[cfg(feature = "MTLDrawable")]
         /// Schedules a signal operation on the command queue to indicate when rendering to a Metal drawable is complete.
@@ -455,7 +469,7 @@ extern_protocol!(
         /// - drawable: ``MTLDrawable`` instance to signal.
         #[unsafe(method(signalDrawable:))]
         #[unsafe(method_family = none)]
-        unsafe fn signalDrawable(&self, drawable: &ProtocolObject<dyn MTLDrawable>);
+        fn signalDrawable(&self, drawable: &ProtocolObject<dyn MTLDrawable>);
 
         #[cfg(feature = "MTLDrawable")]
         /// Schedules a wait operation on the command queue to ensure the display is no longer using a specific Metal drawable.
@@ -472,7 +486,7 @@ extern_protocol!(
         /// - drawable: ``MTLDrawable`` instance to signal.
         #[unsafe(method(waitForDrawable:))]
         #[unsafe(method_family = none)]
-        unsafe fn waitForDrawable(&self, drawable: &ProtocolObject<dyn MTLDrawable>);
+        fn waitForDrawable(&self, drawable: &ProtocolObject<dyn MTLDrawable>);
 
         #[cfg(feature = "MTLResidencySet")]
         /// Marks a residency set as part of this command queue.
@@ -485,7 +499,7 @@ extern_protocol!(
         /// - Parameter residencySet: ``MTLResidencySet`` to add to the command queue.
         #[unsafe(method(addResidencySet:))]
         #[unsafe(method_family = none)]
-        unsafe fn addResidencySet(&self, residency_set: &ProtocolObject<dyn MTLResidencySet>);
+        fn addResidencySet(&self, residency_set: &ProtocolObject<dyn MTLResidencySet>);
 
         #[cfg(feature = "MTLResidencySet")]
         /// Marks an array of residency sets as part of this command queue.
@@ -515,7 +529,7 @@ extern_protocol!(
         /// - Parameter residencySet: ``MTLResidencySet`` instance to remove from the command queue.
         #[unsafe(method(removeResidencySet:))]
         #[unsafe(method_family = none)]
-        unsafe fn removeResidencySet(&self, residency_set: &ProtocolObject<dyn MTLResidencySet>);
+        fn removeResidencySet(&self, residency_set: &ProtocolObject<dyn MTLResidencySet>);
 
         #[cfg(feature = "MTLResidencySet")]
         /// Removes multiple residency sets from the command queue.
