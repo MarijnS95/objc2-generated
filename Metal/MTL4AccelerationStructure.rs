@@ -251,7 +251,7 @@ impl MTL4PrimitiveAccelerationStructureDescriptor {
         /// Setter for [`geometryDescriptors`][Self::geometryDescriptors].
         #[unsafe(method(setGeometryDescriptors:))]
         #[unsafe(method_family = none)]
-        pub unsafe fn setGeometryDescriptors(
+        pub fn setGeometryDescriptors(
             &self,
             geometry_descriptors: Option<&NSArray<MTL4AccelerationStructureGeometryDescriptor>>,
         );
@@ -336,8 +336,16 @@ impl MTL4PrimitiveAccelerationStructureDescriptor {
 
         #[unsafe(method(new))]
         #[unsafe(method_family = new)]
-        pub unsafe fn new() -> Retained<Self>;
+        pub fn new() -> Retained<Self>;
     );
+}
+
+#[cfg(feature = "MTLAccelerationStructure")]
+impl DefaultRetained for MTL4PrimitiveAccelerationStructureDescriptor {
+    #[inline]
+    fn default_retained() -> Retained<Self> {
+        Self::new()
+    }
 }
 
 extern_class!(
@@ -500,8 +508,15 @@ impl MTL4AccelerationStructureTriangleGeometryDescriptor {
 
         #[unsafe(method(new))]
         #[unsafe(method_family = new)]
-        pub unsafe fn new() -> Retained<Self>;
+        pub fn new() -> Retained<Self>;
     );
+}
+
+impl DefaultRetained for MTL4AccelerationStructureTriangleGeometryDescriptor {
+    #[inline]
+    fn default_retained() -> Retained<Self> {
+        Self::new()
+    }
 }
 
 extern_class!(
@@ -582,8 +597,15 @@ impl MTL4AccelerationStructureBoundingBoxGeometryDescriptor {
 
         #[unsafe(method(new))]
         #[unsafe(method_family = new)]
-        pub unsafe fn new() -> Retained<Self>;
+        pub fn new() -> Retained<Self>;
     );
+}
+
+impl DefaultRetained for MTL4AccelerationStructureBoundingBoxGeometryDescriptor {
+    #[inline]
+    fn default_retained() -> Retained<Self> {
+        Self::new()
+    }
 }
 
 extern_class!(
@@ -1521,8 +1543,16 @@ impl MTL4InstanceAccelerationStructureDescriptor {
 
         #[unsafe(method(new))]
         #[unsafe(method_family = new)]
-        pub unsafe fn new() -> Retained<Self>;
+        pub fn new() -> Retained<Self>;
     );
+}
+
+#[cfg(feature = "MTLAccelerationStructure")]
+impl DefaultRetained for MTL4InstanceAccelerationStructureDescriptor {
+    #[inline]
+    fn default_retained() -> Retained<Self> {
+        Self::new()
+    }
 }
 
 extern_class!(

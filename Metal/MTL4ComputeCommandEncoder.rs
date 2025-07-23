@@ -33,7 +33,7 @@ extern_protocol!(
         /// - Returns: a bitmask representing shader stages that commands currently present in this command encoder operate on.
         #[unsafe(method(stages))]
         #[unsafe(method_family = none)]
-        unsafe fn stages(&self) -> MTLStages;
+        fn stages(&self) -> MTLStages;
 
         #[cfg(all(feature = "MTLAllocation", feature = "MTLComputePipeline"))]
         /// Configures this encoder with a compute pipeline state that applies to your subsequent dispatch commands.
@@ -41,10 +41,7 @@ extern_protocol!(
         /// - Parameter state: a non-`nil` ``MTLComputePipelineState``.
         #[unsafe(method(setComputePipelineState:))]
         #[unsafe(method_family = none)]
-        unsafe fn setComputePipelineState(
-            &self,
-            state: &ProtocolObject<dyn MTLComputePipelineState>,
-        );
+        fn setComputePipelineState(&self, state: &ProtocolObject<dyn MTLComputePipelineState>);
 
         /// Configures the size of a threadgroup memory buffer for a threadgroup argument in the compute shader function.
         ///
@@ -75,7 +72,7 @@ extern_protocol!(
         /// threadgroup, in each dimension.
         #[unsafe(method(dispatchThreads:threadsPerThreadgroup:))]
         #[unsafe(method_family = none)]
-        unsafe fn dispatchThreads_threadsPerThreadgroup(
+        fn dispatchThreads_threadsPerThreadgroup(
             &self,
             threads_per_grid: MTLSize,
             threads_per_threadgroup: MTLSize,
@@ -91,7 +88,7 @@ extern_protocol!(
         /// threadgroup, in each dimension.
         #[unsafe(method(dispatchThreadgroups:threadsPerThreadgroup:))]
         #[unsafe(method_family = none)]
-        unsafe fn dispatchThreadgroups_threadsPerThreadgroup(
+        fn dispatchThreadgroups_threadsPerThreadgroup(
             &self,
             threadgroups_per_grid: MTLSize,
             threads_per_threadgroup: MTLSize,
@@ -148,7 +145,7 @@ extern_protocol!(
         /// - executionRange:        The range of commands to execute.
         #[unsafe(method(executeCommandsInBuffer:withRange:))]
         #[unsafe(method_family = none)]
-        unsafe fn executeCommandsInBuffer_withRange(
+        fn executeCommandsInBuffer_withRange(
             &self,
             indirect_command_buffer: &ProtocolObject<dyn MTLIndirectCommandBuffer>,
             execution_range: NSRange,
@@ -173,7 +170,7 @@ extern_protocol!(
         /// structure. This address requires 4-byte alignment.
         #[unsafe(method(executeCommandsInBuffer:indirectBuffer:))]
         #[unsafe(method_family = none)]
-        unsafe fn executeCommandsInBuffer_indirectBuffer(
+        fn executeCommandsInBuffer_indirectBuffer(
             &self,
             indirect_commandbuffer: &ProtocolObject<dyn MTLIndirectCommandBuffer>,
             indirect_range_buffer: MTLGPUAddress,
@@ -192,7 +189,7 @@ extern_protocol!(
         /// ``MTLTexture/pixelFormat`` and ``MTLTexture/sampleCount`` as `sourceTexture`.
         #[unsafe(method(copyFromTexture:toTexture:))]
         #[unsafe(method_family = none)]
-        unsafe fn copyFromTexture_toTexture(
+        fn copyFromTexture_toTexture(
             &self,
             source_texture: &ProtocolObject<dyn MTLTexture>,
             destination_texture: &ProtocolObject<dyn MTLTexture>,
@@ -236,7 +233,7 @@ extern_protocol!(
         /// and `levelCount` doesn’t exceed the number of mipmap levels in `destinationTexture`.
         #[unsafe(method(copyFromTexture:sourceSlice:sourceLevel:toTexture:destinationSlice:destinationLevel:sliceCount:levelCount:))]
         #[unsafe(method_family = none)]
-        unsafe fn copyFromTexture_sourceSlice_sourceLevel_toTexture_destinationSlice_destinationLevel_sliceCount_levelCount(
+        fn copyFromTexture_sourceSlice_sourceLevel_toTexture_destinationSlice_destinationLevel_sliceCount_levelCount(
             &self,
             source_texture: &ProtocolObject<dyn MTLTexture>,
             source_slice: NSUInteger,
@@ -291,7 +288,7 @@ extern_protocol!(
         /// not relevant to `destinationTexture`.
         #[unsafe(method(copyFromTexture:sourceSlice:sourceLevel:sourceOrigin:sourceSize:toTexture:destinationSlice:destinationLevel:destinationOrigin:))]
         #[unsafe(method_family = none)]
-        unsafe fn copyFromTexture_sourceSlice_sourceLevel_sourceOrigin_sourceSize_toTexture_destinationSlice_destinationLevel_destinationOrigin(
+        fn copyFromTexture_sourceSlice_sourceLevel_sourceOrigin_sourceSize_toTexture_destinationSlice_destinationLevel_destinationOrigin(
             &self,
             source_texture: &ProtocolObject<dyn MTLTexture>,
             source_slice: NSUInteger,
@@ -414,7 +411,7 @@ extern_protocol!(
         /// `options` to ``MTLBlitOption/MTLBlitOptionRowLinearPVRTC``.
         #[unsafe(method(copyFromTexture:sourceSlice:sourceLevel:sourceOrigin:sourceSize:toBuffer:destinationOffset:destinationBytesPerRow:destinationBytesPerImage:options:))]
         #[unsafe(method_family = none)]
-        unsafe fn copyFromTexture_sourceSlice_sourceLevel_sourceOrigin_sourceSize_toBuffer_destinationOffset_destinationBytesPerRow_destinationBytesPerImage_options(
+        fn copyFromTexture_sourceSlice_sourceLevel_sourceOrigin_sourceSize_toBuffer_destinationOffset_destinationBytesPerRow_destinationBytesPerImage_options(
             &self,
             source_texture: &ProtocolObject<dyn MTLTexture>,
             source_slice: NSUInteger,
@@ -494,7 +491,7 @@ extern_protocol!(
         /// relevant to `destinationTexture`.
         #[unsafe(method(copyFromBuffer:sourceOffset:sourceBytesPerRow:sourceBytesPerImage:sourceSize:toTexture:destinationSlice:destinationLevel:destinationOrigin:))]
         #[unsafe(method_family = none)]
-        unsafe fn copyFromBuffer_sourceOffset_sourceBytesPerRow_sourceBytesPerImage_sourceSize_toTexture_destinationSlice_destinationLevel_destinationOrigin(
+        fn copyFromBuffer_sourceOffset_sourceBytesPerRow_sourceBytesPerImage_sourceSize_toTexture_destinationSlice_destinationLevel_destinationOrigin(
             &self,
             source_buffer: &ProtocolObject<dyn MTLBuffer>,
             source_offset: NSUInteger,
@@ -557,7 +554,7 @@ extern_protocol!(
         /// `options` to ``MTLBlitOption/MTLBlitOptionRowLinearPVRTC``.
         #[unsafe(method(copyFromBuffer:sourceOffset:sourceBytesPerRow:sourceBytesPerImage:sourceSize:toTexture:destinationSlice:destinationLevel:destinationOrigin:options:))]
         #[unsafe(method_family = none)]
-        unsafe fn copyFromBuffer_sourceOffset_sourceBytesPerRow_sourceBytesPerImage_sourceSize_toTexture_destinationSlice_destinationLevel_destinationOrigin_options(
+        fn copyFromBuffer_sourceOffset_sourceBytesPerRow_sourceBytesPerImage_sourceSize_toTexture_destinationSlice_destinationLevel_destinationOrigin_options(
             &self,
             source_buffer: &ProtocolObject<dyn MTLBuffer>,
             source_offset: NSUInteger,
@@ -588,7 +585,7 @@ extern_protocol!(
         /// - destinationSlice:  The slice of `destinationTensor` to which Metal copies data.
         #[unsafe(method(copyFromTensor:sourceOrigin:sourceDimensions:toTensor:destinationOrigin:destinationDimensions:))]
         #[unsafe(method_family = none)]
-        unsafe fn copyFromTensor_sourceOrigin_sourceDimensions_toTensor_destinationOrigin_destinationDimensions(
+        fn copyFromTensor_sourceOrigin_sourceDimensions_toTensor_destinationOrigin_destinationDimensions(
             &self,
             source_tensor: &ProtocolObject<dyn MTLTensor>,
             source_origin: &MTLTensorExtents,
@@ -613,7 +610,7 @@ extern_protocol!(
         /// - Parameter texture: A mipmapped, color-renderable or color-filterable ``MTLTexture`` instance the command generates mipmaps for.
         #[unsafe(method(generateMipmapsForTexture:))]
         #[unsafe(method_family = none)]
-        unsafe fn generateMipmapsForTexture(&self, texture: &ProtocolObject<dyn MTLTexture>);
+        fn generateMipmapsForTexture(&self, texture: &ProtocolObject<dyn MTLTexture>);
 
         #[cfg(all(
             feature = "MTLAllocation",
@@ -655,7 +652,7 @@ extern_protocol!(
         /// - Parameter texture: A ``MTLTexture`` instance the command optimizes for GPU access.
         #[unsafe(method(optimizeContentsForGPUAccess:))]
         #[unsafe(method_family = none)]
-        unsafe fn optimizeContentsForGPUAccess(&self, texture: &ProtocolObject<dyn MTLTexture>);
+        fn optimizeContentsForGPUAccess(&self, texture: &ProtocolObject<dyn MTLTexture>);
 
         #[cfg(all(
             feature = "MTLAllocation",
@@ -679,7 +676,7 @@ extern_protocol!(
         /// - level:   A mipmap level within `texture`.
         #[unsafe(method(optimizeContentsForGPUAccess:slice:level:))]
         #[unsafe(method_family = none)]
-        unsafe fn optimizeContentsForGPUAccess_slice_level(
+        fn optimizeContentsForGPUAccess_slice_level(
             &self,
             texture: &ProtocolObject<dyn MTLTexture>,
             slice: NSUInteger,
@@ -705,7 +702,7 @@ extern_protocol!(
         /// - Parameter texture: A ``MTLTexture`` instance the command optimizes for CPU access.
         #[unsafe(method(optimizeContentsForCPUAccess:))]
         #[unsafe(method_family = none)]
-        unsafe fn optimizeContentsForCPUAccess(&self, texture: &ProtocolObject<dyn MTLTexture>);
+        fn optimizeContentsForCPUAccess(&self, texture: &ProtocolObject<dyn MTLTexture>);
 
         #[cfg(all(
             feature = "MTLAllocation",
@@ -729,7 +726,7 @@ extern_protocol!(
         /// - level:   A mipmap level within `texture`.
         #[unsafe(method(optimizeContentsForCPUAccess:slice:level:))]
         #[unsafe(method_family = none)]
-        unsafe fn optimizeContentsForCPUAccess_slice_level(
+        fn optimizeContentsForCPUAccess_slice_level(
             &self,
             texture: &ProtocolObject<dyn MTLTexture>,
             slice: NSUInteger,
@@ -808,10 +805,7 @@ extern_protocol!(
         /// - argumentTable: A ``MTL4ArgumentTable`` to set on the command encoder.
         #[unsafe(method(setArgumentTable:))]
         #[unsafe(method_family = none)]
-        unsafe fn setArgumentTable(
-            &self,
-            argument_table: Option<&ProtocolObject<dyn MTL4ArgumentTable>>,
-        );
+        fn setArgumentTable(&self, argument_table: Option<&ProtocolObject<dyn MTL4ArgumentTable>>);
 
         #[cfg(all(
             feature = "MTL4AccelerationStructure",
@@ -846,7 +840,7 @@ extern_protocol!(
         /// them "undefined" after the refit operation starts and completes.
         #[unsafe(method(buildAccelerationStructure:descriptor:scratchBuffer:))]
         #[unsafe(method_family = none)]
-        unsafe fn buildAccelerationStructure_descriptor_scratchBuffer(
+        fn buildAccelerationStructure_descriptor_scratchBuffer(
             &self,
             acceleration_structure: &ProtocolObject<dyn MTLAccelerationStructure>,
             descriptor: &MTL4AccelerationStructureDescriptor,
@@ -897,7 +891,7 @@ extern_protocol!(
         /// them "undefined" after the refit operation starts and completes.
         #[unsafe(method(refitAccelerationStructure:descriptor:destination:scratchBuffer:))]
         #[unsafe(method_family = none)]
-        unsafe fn refitAccelerationStructure_descriptor_destination_scratchBuffer(
+        fn refitAccelerationStructure_descriptor_destination_scratchBuffer(
             &self,
             source_acceleration_structure: &ProtocolObject<dyn MTLAccelerationStructure>,
             descriptor: &MTL4AccelerationStructureDescriptor,
@@ -952,7 +946,7 @@ extern_protocol!(
         /// - options:                          Options specifying the elements of the acceleration structure to refit.
         #[unsafe(method(refitAccelerationStructure:descriptor:destination:scratchBuffer:options:))]
         #[unsafe(method_family = none)]
-        unsafe fn refitAccelerationStructure_descriptor_destination_scratchBuffer_options(
+        fn refitAccelerationStructure_descriptor_destination_scratchBuffer_options(
             &self,
             source_acceleration_structure: &ProtocolObject<dyn MTLAccelerationStructure>,
             descriptor: &MTL4AccelerationStructureDescriptor,
@@ -983,7 +977,7 @@ extern_protocol!(
         /// - destinationAccelerationStructure: Acceleration structure to copy to.
         #[unsafe(method(copyAccelerationStructure:toAccelerationStructure:))]
         #[unsafe(method_family = none)]
-        unsafe fn copyAccelerationStructure_toAccelerationStructure(
+        fn copyAccelerationStructure_toAccelerationStructure(
             &self,
             source_acceleration_structure: &ProtocolObject<dyn MTLAccelerationStructure>,
             destination_acceleration_structure: &ProtocolObject<dyn MTLAccelerationStructure>,
@@ -1010,7 +1004,7 @@ extern_protocol!(
         /// value, representing the compacted size in bytes.
         #[unsafe(method(writeCompactedAccelerationStructureSize:toBuffer:))]
         #[unsafe(method_family = none)]
-        unsafe fn writeCompactedAccelerationStructureSize_toBuffer(
+        fn writeCompactedAccelerationStructureSize_toBuffer(
             &self,
             acceleration_structure: &ProtocolObject<dyn MTLAccelerationStructure>,
             buffer: MTL4BufferRange,
@@ -1036,7 +1030,7 @@ extern_protocol!(
         /// - destinationAccelerationStructure: Acceleration structure to copy to.
         #[unsafe(method(copyAndCompactAccelerationStructure:toAccelerationStructure:))]
         #[unsafe(method_family = none)]
-        unsafe fn copyAndCompactAccelerationStructure_toAccelerationStructure(
+        fn copyAndCompactAccelerationStructure_toAccelerationStructure(
             &self,
             source_acceleration_structure: &ProtocolObject<dyn MTLAccelerationStructure>,
             destination_acceleration_structure: &ProtocolObject<dyn MTLAccelerationStructure>,
@@ -1060,7 +1054,7 @@ extern_protocol!(
         /// - index:       The index value into which Metal writes the timestamp.
         #[unsafe(method(writeTimestampWithGranularity:intoHeap:atIndex:))]
         #[unsafe(method_family = none)]
-        unsafe fn writeTimestampWithGranularity_intoHeap_atIndex(
+        fn writeTimestampWithGranularity_intoHeap_atIndex(
             &self,
             granularity: MTL4TimestampGranularity,
             counter_heap: &ProtocolObject<dyn MTL4CounterHeap>,

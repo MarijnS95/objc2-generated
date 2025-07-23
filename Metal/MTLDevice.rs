@@ -2001,9 +2001,8 @@ extern_protocol!(
         /// - Returns: A ``MTL4CommandAllocator`` instance, or `nil` if the function failed.
         #[unsafe(method(newCommandAllocator))]
         #[unsafe(method_family = new)]
-        unsafe fn newCommandAllocator(
-            &self,
-        ) -> Option<Retained<ProtocolObject<dyn MTL4CommandAllocator>>>;
+        fn newCommandAllocator(&self)
+            -> Option<Retained<ProtocolObject<dyn MTL4CommandAllocator>>>;
 
         #[cfg(feature = "MTL4CommandAllocator")]
         /// Creates a new command allocator from a command allocator descriptor.
@@ -2017,7 +2016,7 @@ extern_protocol!(
         /// - Returns: A ``MTL4CommandAllocator`` instance, or `nil` if the function failed.
         #[unsafe(method(newCommandAllocatorWithDescriptor:error:_))]
         #[unsafe(method_family = new)]
-        unsafe fn newCommandAllocatorWithDescriptor_error(
+        fn newCommandAllocatorWithDescriptor_error(
             &self,
             descriptor: &MTL4CommandAllocatorDescriptor,
         ) -> Result<Retained<ProtocolObject<dyn MTL4CommandAllocator>>, Retained<NSError>>;
@@ -2028,9 +2027,7 @@ extern_protocol!(
         /// - Returns: A ``MTL4CommandQueue`` instance, or `nil` if the function failed.
         #[unsafe(method(newMTL4CommandQueue))]
         #[unsafe(method_family = new)]
-        unsafe fn newMTL4CommandQueue(
-            &self,
-        ) -> Option<Retained<ProtocolObject<dyn MTL4CommandQueue>>>;
+        fn newMTL4CommandQueue(&self) -> Option<Retained<ProtocolObject<dyn MTL4CommandQueue>>>;
 
         #[cfg(feature = "MTL4CommandQueue")]
         /// Creates a new command queue from a queue descriptor.
@@ -2044,7 +2041,7 @@ extern_protocol!(
         /// - Returns: A ``MTL4CommandQueue`` instance, or `nil` if the function failed.
         #[unsafe(method(newMTL4CommandQueueWithDescriptor:error:_))]
         #[unsafe(method_family = new)]
-        unsafe fn newMTL4CommandQueueWithDescriptor_error(
+        fn newMTL4CommandQueueWithDescriptor_error(
             &self,
             descriptor: &MTL4CommandQueueDescriptor,
         ) -> Result<Retained<ProtocolObject<dyn MTL4CommandQueue>>, Retained<NSError>>;
@@ -2055,9 +2052,7 @@ extern_protocol!(
         /// - Returns: A ``MTL4CommandBuffer`` instance, or `nil` if the function failed.
         #[unsafe(method(newCommandBuffer))]
         #[unsafe(method_family = new)]
-        unsafe fn newCommandBuffer(
-            &self,
-        ) -> Option<Retained<ProtocolObject<dyn MTL4CommandBuffer>>>;
+        fn newCommandBuffer(&self) -> Option<Retained<ProtocolObject<dyn MTL4CommandBuffer>>>;
 
         #[cfg(feature = "MTL4ArgumentTable")]
         /// Creates a new argument table from an argument table descriptor.
@@ -2071,7 +2066,7 @@ extern_protocol!(
         /// - Returns: A ``MTL4ArgumentTable`` instance, or `nil` if the function failed.
         #[unsafe(method(newArgumentTableWithDescriptor:error:_))]
         #[unsafe(method_family = new)]
-        unsafe fn newArgumentTableWithDescriptor_error(
+        fn newArgumentTableWithDescriptor_error(
             &self,
             descriptor: &MTL4ArgumentTableDescriptor,
         ) -> Result<Retained<ProtocolObject<dyn MTL4ArgumentTable>>, Retained<NSError>>;
@@ -2088,7 +2083,7 @@ extern_protocol!(
         /// - Returns: A ``MTLTextureViewPool`` instance, or `nil` if the function failed.
         #[unsafe(method(newTextureViewPoolWithDescriptor:error:_))]
         #[unsafe(method_family = new)]
-        unsafe fn newTextureViewPoolWithDescriptor_error(
+        fn newTextureViewPoolWithDescriptor_error(
             &self,
             descriptor: &MTLResourceViewPoolDescriptor,
         ) -> Result<Retained<ProtocolObject<dyn MTLTextureViewPool>>, Retained<NSError>>;
@@ -2105,7 +2100,7 @@ extern_protocol!(
         /// - Returns: A ``MTL4Compiler`` instance, or `nil` if the function failed.
         #[unsafe(method(newCompilerWithDescriptor:error:_))]
         #[unsafe(method_family = new)]
-        unsafe fn newCompilerWithDescriptor_error(
+        fn newCompilerWithDescriptor_error(
             &self,
             descriptor: &MTL4CompilerDescriptor,
         ) -> Result<Retained<ProtocolObject<dyn MTL4Compiler>>, Retained<NSError>>;
@@ -2121,7 +2116,7 @@ extern_protocol!(
         /// - Returns: A ``MTL4Archive`` instance, or `nil` if the function failed.
         #[unsafe(method(newArchiveWithURL:error:_))]
         #[unsafe(method_family = new)]
-        unsafe fn newArchiveWithURL_error(
+        fn newArchiveWithURL_error(
             &self,
             url: &NSURL,
         ) -> Result<Retained<ProtocolObject<dyn MTL4Archive>>, Retained<NSError>>;
@@ -2135,7 +2130,7 @@ extern_protocol!(
         /// - Returns: A ``MTL4PipelineDataSetSerializer`` instance, or `nil` if the function failed.
         #[unsafe(method(newPipelineDataSetSerializerWithDescriptor:))]
         #[unsafe(method_family = new)]
-        unsafe fn newPipelineDataSetSerializerWithDescriptor(
+        fn newPipelineDataSetSerializerWithDescriptor(
             &self,
             descriptor: &MTL4PipelineDataSetSerializerDescriptor,
         ) -> Retained<ProtocolObject<dyn MTL4PipelineDataSetSerializer>>;
@@ -2158,7 +2153,7 @@ extern_protocol!(
         /// - Returns: A ``MTLBuffer`` instance, or `nil` if the function failed.
         #[unsafe(method(newBufferWithLength:options:placementSparsePageSize:))]
         #[unsafe(method_family = new)]
-        unsafe fn newBufferWithLength_options_placementSparsePageSize(
+        fn newBufferWithLength_options_placementSparsePageSize(
             &self,
             length: NSUInteger,
             options: MTLResourceOptions,
@@ -2176,7 +2171,7 @@ extern_protocol!(
         /// - Returns: A ``MTL4CounterHeap`` instance, or `nil` if the function failed.
         #[unsafe(method(newCounterHeapWithDescriptor:error:_))]
         #[unsafe(method_family = new)]
-        unsafe fn newCounterHeapWithDescriptor_error(
+        fn newCounterHeapWithDescriptor_error(
             &self,
             descriptor: &MTL4CounterHeapDescriptor,
         ) -> Result<Retained<ProtocolObject<dyn MTL4CounterHeap>>, Retained<NSError>>;
@@ -2198,14 +2193,14 @@ extern_protocol!(
         /// - Returns: The size of the post-transformation entry from a ``MTL4CounterHeap`` of type ``MTL4CounterHeapType``.
         #[unsafe(method(sizeOfCounterHeapEntry:))]
         #[unsafe(method_family = none)]
-        unsafe fn sizeOfCounterHeapEntry(&self, r#type: MTL4CounterHeapType) -> NSUInteger;
+        fn sizeOfCounterHeapEntry(&self, r#type: MTL4CounterHeapType) -> NSUInteger;
 
         /// Queries the frequency of the GPU timestamp in ticks per second.
         ///
         /// - Returns: The frequency of the GPU timestamp in ticks per second.
         #[unsafe(method(queryTimestampFrequency))]
         #[unsafe(method_family = none)]
-        unsafe fn queryTimestampFrequency(&self) -> u64;
+        fn queryTimestampFrequency(&self) -> u64;
 
         #[cfg(all(feature = "MTL4BinaryFunction", feature = "MTLFunctionHandle"))]
         /// Get the function handle for the specified binary-linked function from the pipeline state.
@@ -2216,7 +2211,7 @@ extern_protocol!(
         /// - Returns: A ``MTLFunctionHandle`` instance  for a binary function that was compiled with ``MTLFunctionOptionPipelineIndependent``, otherwise `nil`.
         #[unsafe(method(functionHandleWithBinaryFunction:))]
         #[unsafe(method_family = none)]
-        unsafe fn functionHandleWithBinaryFunction(
+        fn functionHandleWithBinaryFunction(
             &self,
             function: &ProtocolObject<dyn MTL4BinaryFunction>,
         ) -> Option<Retained<ProtocolObject<dyn MTLFunctionHandle>>>;
