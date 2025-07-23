@@ -36,6 +36,9 @@ mod __MTL4BinaryFunction;
 #[cfg(feature = "MTL4BinaryFunctionDescriptor")]
 #[path = "MTL4BinaryFunctionDescriptor.rs"]
 mod __MTL4BinaryFunctionDescriptor;
+#[cfg(feature = "MTL4BufferRange")]
+#[path = "MTL4BufferRange.rs"]
+mod __MTL4BufferRange;
 #[cfg(feature = "MTL4CommandAllocator")]
 #[path = "MTL4CommandAllocator.rs"]
 mod __MTL4CommandAllocator;
@@ -75,9 +78,6 @@ mod __MTL4LibraryDescriptor;
 #[cfg(feature = "MTL4LibraryFunctionDescriptor")]
 #[path = "MTL4LibraryFunctionDescriptor.rs"]
 mod __MTL4LibraryFunctionDescriptor;
-#[cfg(feature = "MTL4LinkedFunctions")]
-#[path = "MTL4LinkedFunctions.rs"]
-mod __MTL4LinkedFunctions;
 #[cfg(feature = "MTL4LinkingDescriptor")]
 #[path = "MTL4LinkingDescriptor.rs"]
 mod __MTL4LinkingDescriptor;
@@ -213,6 +213,9 @@ mod __MTLFunctionLog;
 #[cfg(feature = "MTLFunctionStitching")]
 #[path = "MTLFunctionStitching.rs"]
 mod __MTLFunctionStitching;
+#[cfg(feature = "MTLGPUAddress")]
+#[path = "MTLGPUAddress.rs"]
+mod __MTLGPUAddress;
 #[cfg(feature = "MTLHeap")]
 #[path = "MTLHeap.rs"]
 mod __MTLHeap;
@@ -346,12 +349,12 @@ pub use self::__MTL4ArgumentTable::MTL4ArgumentTable;
 pub use self::__MTL4ArgumentTable::MTL4ArgumentTableDescriptor;
 #[cfg(feature = "MTL4BinaryFunction")]
 pub use self::__MTL4BinaryFunction::MTL4BinaryFunction;
-#[cfg(feature = "MTL4BinaryFunction")]
-pub use self::__MTL4BinaryFunction::MTL4BinaryFunctionReflection;
 #[cfg(feature = "MTL4BinaryFunctionDescriptor")]
 pub use self::__MTL4BinaryFunctionDescriptor::MTL4BinaryFunctionDescriptor;
 #[cfg(feature = "MTL4BinaryFunctionDescriptor")]
 pub use self::__MTL4BinaryFunctionDescriptor::MTL4BinaryFunctionOptions;
+#[cfg(all(feature = "MTL4BufferRange", feature = "MTLGPUAddress"))]
+pub use self::__MTL4BufferRange::MTL4BufferRange;
 #[cfg(feature = "MTL4CommandAllocator")]
 pub use self::__MTL4CommandAllocator::MTL4CommandAllocator;
 #[cfg(feature = "MTL4CommandAllocator")]
@@ -439,8 +442,6 @@ pub use self::__MTL4LibraryDescriptor::MTL4LibraryDescriptor;
     feature = "MTL4LibraryFunctionDescriptor"
 ))]
 pub use self::__MTL4LibraryFunctionDescriptor::MTL4LibraryFunctionDescriptor;
-#[cfg(feature = "MTL4LinkedFunctions")]
-pub use self::__MTL4LinkedFunctions::MTL4LinkedFunctions;
 #[cfg(feature = "MTL4LinkingDescriptor")]
 pub use self::__MTL4LinkingDescriptor::MTL4PipelineStageDynamicLinkingDescriptor;
 #[cfg(feature = "MTL4LinkingDescriptor")]
@@ -480,8 +481,6 @@ pub use self::__MTL4PipelineState::MTL4PipelineDescriptor;
 pub use self::__MTL4PipelineState::MTL4PipelineOptions;
 #[cfg(feature = "MTL4PipelineState")]
 pub use self::__MTL4PipelineState::MTL4ShaderReflection;
-#[cfg(feature = "MTL4PipelineState")]
-pub use self::__MTL4PipelineState::MTLRenderTargetRemapIndexDiscard;
 #[cfg(all(feature = "MTL4CommandEncoder", feature = "MTL4RenderCommandEncoder"))]
 pub use self::__MTL4RenderCommandEncoder::MTL4RenderCommandEncoder;
 #[cfg(feature = "MTL4RenderCommandEncoder")]
@@ -498,8 +497,6 @@ pub use self::__MTL4RenderPipeline::MTL4RenderPipelineColorAttachmentDescriptor;
 pub use self::__MTL4RenderPipeline::MTL4RenderPipelineColorAttachmentDescriptorArray;
 #[cfg(all(feature = "MTL4PipelineState", feature = "MTL4RenderPipeline"))]
 pub use self::__MTL4RenderPipeline::MTL4RenderPipelineDescriptor;
-#[cfg(feature = "MTL4RenderPipeline")]
-pub use self::__MTL4RenderPipeline::MTLLogicalToPhysicalColorAttachmentMap;
 #[cfg(all(
     feature = "MTL4FunctionDescriptor",
     feature = "MTL4SpecializedFunctionDescriptor"
@@ -593,8 +590,6 @@ pub use self::__MTLAccelerationStructureCommandEncoder::MTLAccelerationStructure
 pub use self::__MTLAccelerationStructureCommandEncoder::MTLAccelerationStructurePassSampleBufferAttachmentDescriptor;
 #[cfg(feature = "MTLAccelerationStructureCommandEncoder")]
 pub use self::__MTLAccelerationStructureCommandEncoder::MTLAccelerationStructurePassSampleBufferAttachmentDescriptorArray;
-#[cfg(feature = "MTLAccelerationStructureTypes")]
-pub use self::__MTLAccelerationStructureTypes::MTL4BufferRange;
 #[cfg(feature = "MTLAccelerationStructureTypes")]
 pub use self::__MTLAccelerationStructureTypes::MTLAxisAlignedBoundingBox;
 #[cfg(feature = "MTLAccelerationStructureTypes")]
@@ -923,6 +918,8 @@ pub use self::__MTLFunctionStitching::MTLFunctionStitchingNode;
 pub use self::__MTLFunctionStitching::MTLStitchedLibraryDescriptor;
 #[cfg(feature = "MTLFunctionStitching")]
 pub use self::__MTLFunctionStitching::MTLStitchedLibraryOptions;
+#[cfg(feature = "MTLGPUAddress")]
+pub use self::__MTLGPUAddress::MTLGPUAddress;
 #[cfg(all(feature = "MTLAllocation", feature = "MTLHeap"))]
 pub use self::__MTLHeap::MTLHeap;
 #[cfg(feature = "MTLHeap")]
@@ -1174,6 +1171,8 @@ pub use self::__MTLRenderPipeline::MTLBlendFactor;
 pub use self::__MTLRenderPipeline::MTLBlendOperation;
 #[cfg(feature = "MTLRenderPipeline")]
 pub use self::__MTLRenderPipeline::MTLColorWriteMask;
+#[cfg(feature = "MTLRenderPipeline")]
+pub use self::__MTLRenderPipeline::MTLLogicalToPhysicalColorAttachmentMap;
 #[cfg(feature = "MTLRenderPipeline")]
 pub use self::__MTLRenderPipeline::MTLMeshRenderPipelineDescriptor;
 #[cfg(feature = "MTLRenderPipeline")]

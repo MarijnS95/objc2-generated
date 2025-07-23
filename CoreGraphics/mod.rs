@@ -138,9 +138,6 @@ mod __CGPDFStream;
 #[cfg(feature = "CGPDFString")]
 #[path = "CGPDFString.rs"]
 mod __CGPDFString;
-#[cfg(feature = "CGPDFWrappedObject")]
-#[path = "CGPDFWrappedObject.rs"]
-mod __CGPDFWrappedObject;
 #[cfg(feature = "CGPSConverter")]
 #[path = "CGPSConverter.rs"]
 mod __CGPSConverter;
@@ -1564,8 +1561,12 @@ pub use self::__CGGradient::CGGradient;
 pub use self::__CGGradient::CGGradientCreateWithColorComponents;
 #[cfg(all(feature = "CGColorSpace", feature = "CGGradient"))]
 pub use self::__CGGradient::CGGradientCreateWithColors;
+#[cfg(all(feature = "CGColorSpace", feature = "CGGradient"))]
+pub use self::__CGGradient::CGGradientCreateWithContentHeadroom;
 #[cfg(feature = "CGGradient")]
 pub use self::__CGGradient::CGGradientDrawingOptions;
+#[cfg(feature = "CGGradient")]
+pub use self::__CGGradient::CGGradientGetContentHeadroom;
 #[cfg(feature = "CGITUToneMapping")]
 pub use self::__CGITUToneMapping::kCGSkipBoostToHDR;
 #[cfg(feature = "CGITUToneMapping")]
@@ -2044,24 +2045,6 @@ pub use self::__CGPDFString::CGPDFStringGetBytePtr;
 pub use self::__CGPDFString::CGPDFStringGetLength;
 #[cfg(feature = "CGPDFString")]
 pub use self::__CGPDFString::CGPDFStringRef;
-#[cfg(feature = "CGPDFWrappedObject")]
-pub use self::__CGPDFWrappedObject::CGPDFWrappedObject;
-#[cfg(all(feature = "CGPDFArray", feature = "CGPDFWrappedObject"))]
-pub use self::__CGPDFWrappedObject::CGPDFWrappedObjectCreateWithArray;
-#[cfg(all(feature = "CGPDFObject", feature = "CGPDFWrappedObject"))]
-pub use self::__CGPDFWrappedObject::CGPDFWrappedObjectCreateWithBoolean;
-#[cfg(all(feature = "CGPDFDictionary", feature = "CGPDFWrappedObject"))]
-pub use self::__CGPDFWrappedObject::CGPDFWrappedObjectCreateWithDictionary;
-#[cfg(all(feature = "CGPDFObject", feature = "CGPDFWrappedObject"))]
-pub use self::__CGPDFWrappedObject::CGPDFWrappedObjectCreateWithInteger;
-#[cfg(feature = "CGPDFWrappedObject")]
-pub use self::__CGPDFWrappedObject::CGPDFWrappedObjectCreateWithName;
-#[cfg(all(feature = "CGPDFObject", feature = "CGPDFWrappedObject"))]
-pub use self::__CGPDFWrappedObject::CGPDFWrappedObjectCreateWithReal;
-#[cfg(all(feature = "CGPDFStream", feature = "CGPDFWrappedObject"))]
-pub use self::__CGPDFWrappedObject::CGPDFWrappedObjectCreateWithStream;
-#[cfg(all(feature = "CGPDFString", feature = "CGPDFWrappedObject"))]
-pub use self::__CGPDFWrappedObject::CGPDFWrappedObjectCreateWithString;
 #[cfg(feature = "CGPSConverter")]
 pub use self::__CGPSConverter::CGPSConverter;
 #[cfg(feature = "CGPSConverter")]
@@ -2307,7 +2290,21 @@ pub use self::__CGShading::CGShadingCreateAxial;
     feature = "CGFunction",
     feature = "CGShading"
 ))]
+pub use self::__CGShading::CGShadingCreateAxialWithContentHeadroom;
+#[cfg(all(
+    feature = "CGColorSpace",
+    feature = "CGFunction",
+    feature = "CGShading"
+))]
 pub use self::__CGShading::CGShadingCreateRadial;
+#[cfg(all(
+    feature = "CGColorSpace",
+    feature = "CGFunction",
+    feature = "CGShading"
+))]
+pub use self::__CGShading::CGShadingCreateRadialWithContentHeadroom;
+#[cfg(feature = "CGShading")]
+pub use self::__CGShading::CGShadingGetContentHeadroom;
 #[cfg(feature = "CGToneMapping")]
 pub use self::__CGToneMapping::kCGContentAverageLightLevel;
 #[cfg(feature = "CGToneMapping")]

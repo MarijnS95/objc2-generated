@@ -342,6 +342,9 @@ mod __NSInputServer;
 #[cfg(feature = "NSInterfaceStyle")]
 #[path = "NSInterfaceStyle.rs"]
 mod __NSInterfaceStyle;
+#[cfg(feature = "NSItemBadge")]
+#[path = "NSItemBadge.rs"]
+mod __NSItemBadge;
 #[cfg(feature = "NSItemProvider")]
 #[path = "NSItemProvider.rs"]
 mod __NSItemProvider;
@@ -789,6 +792,9 @@ mod __NSTextViewportLayoutController;
 #[cfg(feature = "NSTintConfiguration")]
 #[path = "NSTintConfiguration.rs"]
 mod __NSTintConfiguration;
+#[cfg(feature = "NSTintProminence")]
+#[path = "NSTintProminence.rs"]
+mod __NSTintProminence;
 #[cfg(feature = "NSTitlebarAccessoryViewController")]
 #[path = "NSTitlebarAccessoryViewController.rs"]
 mod __NSTitlebarAccessoryViewController;
@@ -3156,6 +3162,8 @@ pub use self::__NSComboButton::NSComboButtonStyle;
 #[cfg(all(feature = "NSControl", feature = "NSResponder", feature = "NSView"))]
 pub use self::__NSControl::NSControl;
 #[cfg(feature = "NSControl")]
+pub use self::__NSControl::NSControlBorderShape;
+#[cfg(feature = "NSControl")]
 pub use self::__NSControl::NSControlTextDidBeginEditingNotification;
 #[cfg(feature = "NSControl")]
 pub use self::__NSControl::NSControlTextDidChangeNotification;
@@ -4655,6 +4663,8 @@ pub use self::__NSInterfaceStyle::NSNextStepInterfaceStyle;
 pub use self::__NSInterfaceStyle::NSNoInterfaceStyle;
 #[cfg(feature = "NSInterfaceStyle")]
 pub use self::__NSInterfaceStyle::NSWindows95InterfaceStyle;
+#[cfg(feature = "NSItemBadge")]
+pub use self::__NSItemBadge::NSItemBadge;
 #[cfg(feature = "NSItemProvider")]
 pub use self::__NSItemProvider::NSItemProviderNSItemSourceInfo;
 #[cfg(feature = "NSItemProvider")]
@@ -6960,6 +6970,8 @@ pub use self::__NSTextViewportLayoutController::NSTextViewportLayoutController;
 pub use self::__NSTextViewportLayoutController::NSTextViewportLayoutControllerDelegate;
 #[cfg(feature = "NSTintConfiguration")]
 pub use self::__NSTintConfiguration::NSTintConfiguration;
+#[cfg(feature = "NSTintProminence")]
+pub use self::__NSTintProminence::NSTintProminence;
 #[cfg(all(
     feature = "NSResponder",
     feature = "NSTitlebarAccessoryViewController",
