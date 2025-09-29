@@ -517,7 +517,7 @@ impl MTLArgumentDescriptor {
         /// MTLDataTypePointer.
         #[unsafe(method(dataType))]
         #[unsafe(method_family = none)]
-        pub unsafe fn dataType(&self) -> MTLDataType;
+        pub fn dataType(&self) -> MTLDataType;
 
         #[cfg(feature = "MTLDataType")]
         /// Setter for [`dataType`][Self::dataType].
@@ -528,7 +528,7 @@ impl MTLArgumentDescriptor {
         /// The binding point index of the argument
         #[unsafe(method(index))]
         #[unsafe(method_family = none)]
-        pub unsafe fn index(&self) -> NSUInteger;
+        pub fn index(&self) -> NSUInteger;
 
         /// Setter for [`index`][Self::index].
         #[unsafe(method(setIndex:))]
@@ -538,7 +538,7 @@ impl MTLArgumentDescriptor {
         /// The length of an array of constants, textures, or samplers, or 0 for non-array arguments
         #[unsafe(method(arrayLength))]
         #[unsafe(method_family = none)]
-        pub unsafe fn arrayLength(&self) -> NSUInteger;
+        pub fn arrayLength(&self) -> NSUInteger;
 
         /// Setter for [`arrayLength`][Self::arrayLength].
         #[unsafe(method(setArrayLength:))]
@@ -549,7 +549,7 @@ impl MTLArgumentDescriptor {
         /// Access flags for the argument
         #[unsafe(method(access))]
         #[unsafe(method_family = none)]
-        pub unsafe fn access(&self) -> MTLBindingAccess;
+        pub fn access(&self) -> MTLBindingAccess;
 
         #[cfg(feature = "MTLArgument")]
         /// Setter for [`access`][Self::access].
@@ -561,7 +561,7 @@ impl MTLArgumentDescriptor {
         /// For texture arguments, the texture type
         #[unsafe(method(textureType))]
         #[unsafe(method_family = none)]
-        pub unsafe fn textureType(&self) -> MTLTextureType;
+        pub fn textureType(&self) -> MTLTextureType;
 
         #[cfg(feature = "MTLTexture")]
         /// Setter for [`textureType`][Self::textureType].
@@ -575,12 +575,12 @@ impl MTLArgumentDescriptor {
         /// explicit "alignas" is applied to the constant in the metal shader language.
         #[unsafe(method(constantBlockAlignment))]
         #[unsafe(method_family = none)]
-        pub unsafe fn constantBlockAlignment(&self) -> NSUInteger;
+        pub fn constantBlockAlignment(&self) -> NSUInteger;
 
         /// Setter for [`constantBlockAlignment`][Self::constantBlockAlignment].
         #[unsafe(method(setConstantBlockAlignment:))]
         #[unsafe(method_family = none)]
-        pub unsafe fn setConstantBlockAlignment(&self, constant_block_alignment: NSUInteger);
+        pub fn setConstantBlockAlignment(&self, constant_block_alignment: NSUInteger);
     );
 }
 
@@ -593,8 +593,15 @@ impl MTLArgumentDescriptor {
 
         #[unsafe(method(new))]
         #[unsafe(method_family = new)]
-        pub unsafe fn new() -> Retained<Self>;
+        pub fn new() -> Retained<Self>;
     );
+}
+
+impl DefaultRetained for MTLArgumentDescriptor {
+    #[inline]
+    fn default_retained() -> Retained<Self> {
+        Self::new()
+    }
 }
 
 extern_class!(
@@ -1863,7 +1870,7 @@ extern_protocol!(
         ))]
         #[unsafe(method(newAccelerationStructureWithDescriptor:))]
         #[unsafe(method_family = new)]
-        unsafe fn newAccelerationStructureWithDescriptor(
+        fn newAccelerationStructureWithDescriptor(
             &self,
             descriptor: &MTLAccelerationStructureDescriptor,
         ) -> Option<Retained<ProtocolObject<dyn MTLAccelerationStructure>>>;
